@@ -46,7 +46,7 @@ function AddNote() {
             value={title}
             type="text"
           ></input>
-          <textarea
+          <textaea
             name="content"
             onChange={handleDescChange}
             placeholder="Enter your description..."
