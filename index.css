@@ -1,0 +1,155 @@
+body,
+html {
+  font-family: "Nunito", serif;
+  font-style: normal;
+  background-color: rgb(233, 233, 233);
+  padding-bottom: 100px;
+  margin: 0px;
+}
+
+h1,
+h2,
+p {
+  display: inline;
+  margin: 0;
+}
+
+#header {
+  background-color: rgb(255, 188, 43);
+  height: 50px;
+  color: rgba(255, 255, 255, 0.938);
+  padding: 10px 0px 0px 10px;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.note-container {
+  display: grid;  
+  grid-template-rows: 1fr 3fr 20px;
+  background-color: white;
+  padding: 20px;
+  margin: 20px;
+  border-color: rgb(150, 150, 150);
+  box-shadow: 3px 3px 10px rgb(163, 163, 163);
+  border-radius: 10px;
+  max-width: 350px;
+}
+
+.note-detail{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  font-size: 25px;
+}
+.content {
+  font-weight: 500;
+  height: 60%;
+}
+
+.date {
+  display: block;
+  color: rgb(122, 122, 122);
+  font-size: 13px;
+}
+
+.delete-button{
+  color:  rgb(255, 188, 43);
+  background-color: white;
+  font-size: 13px;
+  font-weight: bold;
+  border: none;
+  transition-property:background-color,color;
+  transition-duration:  1s;
+  border-radius:10px ;
+  transform-style:  ease-in-out ;
+  padding: 10px;
+}
+
+.delete-button:hover{
+
+  background-color: rgb(227, 227, 227);
+  color: red;
+}
+
+.note-detail{
+  min-width: 200px;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  padding-top: 10px;
+  width: 100%;
+  color: rgb(182, 182, 182);
+  height: 40px;
+  text-align: center;
+  background-color: hsl(0, 0%, 85%);
+}
+
+.add-note-outer-container{
+  display: flex;
+  padding: 30px;
+  position: relative;
+  justify-content:center;
+  
+}
+
+.title-input{
+  height: 50px;
+  width:100%;
+  border-color: white;
+  border-radius: 30px 30px 0 0;
+  border-color: rgb(150, 150, 150);
+  box-shadow: 3px 3px 10px rgb(163, 163, 163);
+  border: none;
+  padding: 10px;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border: none;
+}
+
+.content-input{
+  height: 100px;
+  padding: 10px;
+  border-radius: 0 0 30px 30px;
+  width: 100%;
+  border-color: rgb(150, 150, 150);
+  box-shadow: 3px 3px 10px rgb(163, 163, 163);
+  border: none;
+}
+
+.add-note-inner-container{ 
+  min-height: 100px;
+ 
+}
+
+.add-button{
+  position: relative;
+  background-color:  rgb(255, 188, 43);
+  border: none;
+  color: white;
+  font-size: 50px;
+  border-radius: 30px;
+  height: 50px;
+  width:60px;
+  padding-bottom: 60px;
+  top: 150px;
+  right: 10px;
+  border-color: rgb(150, 150, 150);
+  box-shadow: 3px 3px 10px rgb(163, 163, 163);
+}
+
+
