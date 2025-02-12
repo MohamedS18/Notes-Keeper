@@ -10,19 +10,20 @@ function AddNote() {
     e.preventDefault();
     if (title !== "" && content !== "") {
       setData([
-        ...data,
         {
           id: title.concat(content.substring(0.2)).replace(" ", ""),
           title,
           content,
           created: new Date().toLocaleDateString(),
         },
+        ...data
+        
       ]);
 
       setTitle("");
       setContent("");
     } else {
-      alert("Fields are emmpty !");
+      alert("Fields are empty !");
     }
   }
 
@@ -41,15 +42,15 @@ function AddNote() {
           <input
             name="title"
             onChange={handleTitleChange}
-            placeholder="Enter your title..."
+            placeholder="title..."
             className="title-input"
             value={title}
             type="text"
           ></input>
-          <textaea
+          <textarea
             name="content"
             onChange={handleDescChange}
-            placeholder="Enter your description..."
+            placeholder="description..."
             className="content-input"
             value={content}
             type="text"

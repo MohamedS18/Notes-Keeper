@@ -15,11 +15,15 @@ p {
 }
 
 #header {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
   background-color: rgb(255, 188, 43);
   height: 50px;
   color: rgba(255, 255, 255, 0.938);
-  padding: 10px 0px 0px 10px;
+  padding: 0px 0px 0px 10px;
 }
+
 
 .board {
   display: flex;
@@ -72,10 +76,10 @@ p {
   border-radius:10px ;
   transform-style:  ease-in-out ;
   padding: 10px;
+  cursor: pointer;
 }
 
 .delete-button:hover{
-
   background-color: rgb(227, 227, 227);
   color: red;
 }
@@ -104,6 +108,7 @@ p {
 }
 
 .title-input{
+  font-family: "Nunito", serif;
   height: 50px;
   width:100%;
   border-color: white;
@@ -112,8 +117,6 @@ p {
   box-shadow: 3px 3px 10px rgb(163, 163, 163);
   border: none;
   padding: 10px;
-  font-weight: 800;
-  font-size: 15px;
 }
 
 input:focus, textarea:focus {
@@ -141,15 +144,23 @@ input:focus, textarea:focus {
   background-color:  rgb(255, 188, 43);
   border: none;
   color: white;
-  font-size: 50px;
+  font-size: 40px;
   border-radius: 30px;
-  height: 50px;
-  width:60px;
-  padding-bottom: 60px;
+  height: 40px;
+  width:53px;
+  padding-bottom: 50px;
+  padding-top: 4px;
   top: 150px;
   right: 10px;
   border-color: rgb(150, 150, 150);
   box-shadow: 3px 3px 10px rgb(163, 163, 163);
+  cursor: pointer;
+  transition-property:background-color ;
+  transition-duration: 1s;
+
 }
 
-
+.add-button:hover{
+  background-color: rgb(255, 212, 39);
+  
+}
