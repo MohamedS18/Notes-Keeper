@@ -19,7 +19,7 @@ p {
   align-items: center;
   column-gap: 8px;
   background-color: rgb(255, 188, 43);
-  height: 50px;
+  height: 60px;
   color: rgba(255, 255, 255, 0.938);
   padding: 0px 0px 0px 10px;
 }
@@ -69,7 +69,7 @@ p {
   color:  rgb(255, 188, 43);
   background-color: white;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 600;
   border: none;
   transition-property:background-color,color;
   transition-duration:  1s;
@@ -141,7 +141,7 @@ input:focus, textarea:focus {
 
 .add-button{
   position: relative;
-  background-color:  rgb(255, 188, 43);
+  background-color:  hsl(41, 100%, 58% , 0);
   border: none;
   color: white;
   font-size: 40px;
@@ -149,18 +149,26 @@ input:focus, textarea:focus {
   height: 40px;
   width:53px;
   padding-bottom: 50px;
-  padding-top: 4px;
+  /* padding-top: 4px; */
   top: 150px;
-  right: 10px;
-  border-color: rgb(150, 150, 150);
-  box-shadow: 3px 3px 10px rgb(163, 163, 163);
+  right: 22px;
+  /* background-color: rgb(255, 0, 0); */
   cursor: pointer;
   transition-property:background-color ;
   transition-duration: 1s;
 
 }
 
-.add-button:hover{
-  background-color: rgb(255, 212, 39);
+
+
+.bi-patch-plus-fill{
+  transition-property:fill ;
+  transition-duration: 1s;
+  border-radius: 30px;
+  box-shadow: 3px 3px 10px rgb(248, 248, 248);
+}
+
+.bi-patch-plus-fill:hover{
   
+  fill: rgb(255, 157, 0);
 }
