@@ -62,6 +62,8 @@ function App() {
             const date = new Date(section.lastUpdated).toLocaleString('en-GB', options);
             return (
               <Note
+                setRender={setRender}
+                username = {user}
                 key={section._id}
                 id={section._id}
                 title={section.title}

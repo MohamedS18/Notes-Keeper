@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const { notesSchema } = require("../database/notesSchema");
-const { getAllData } = require("./getAllData");
 
 const Notes = mongoose.model.Note || mongoose.model("Note", notesSchema);
 

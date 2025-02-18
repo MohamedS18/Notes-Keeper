@@ -6,6 +6,7 @@ const { getAllData } = require("../model/getAllData");
 const { isExist } = require("../model/isExist");
 const { isUserExist } = require("../controller/isUserExist");
 const { insertData } = require("../model/insertData");
+const { deleteData } = require("../model/deleteData");
 
 app.use(async (req, res, next) => {
   try {
@@ -25,6 +26,8 @@ const PORT = 3000;
 app.post("/check", isUserExist);
 
 app.put("/insert", insertData);
+
+app.put("/delete", deleteData);
 
 app.post("/", getAllData);
 
