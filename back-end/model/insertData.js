@@ -5,14 +5,16 @@ const Notes = mongoose.model.Note || mongoose.model("Note", notesSchema);
 
 async function insertData(req, res) {
   try {
-    const { username, title, content } = req.body;
-    console.log(username, title, content);
+    const { username, title, content,lastUpdated } = req.body;
+    console.log("Yeah");
+    console.log(req.body);
     const data = await Notes.updateOne(
       { username: username },
-      { $push: { notes: { title, content } } }
+      { $push: { notes: { title, content , lastUpdated:new Date(lastUpdated)} } }
     );
-
-    console.log(data);
+    
+    res.status(200).send({ success: true });
+    
 
     // await data[0].notes.save();
   } catch (err) {

@@ -1,35 +1,41 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 function AddNote(props) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  // const { data, setData } = useContext(dataContext);
-  
 
-  async function  handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    props.setRender(true);
-    if (title !== "" && content !== "") {
-     
-      const response = await axios.put("http://localhost:3000/insert",{
-        username:props.user,
-        title,
-        content,
-      });
+    console.log(title !== "" && content !== "");
+    try {
+      if (title !== "" && content !== "") {
+        const response = await axios.put("http://localhost:3000/insert", {
+          username: props.user,
+          title,
+          content,
+          lastUpdated:new Date(),
+        });
+        console.log(response.data);
+        props.refreshNotes();
+        console.log("suma");
 
-      setTitle("");
-      setContent("");
-    } else {
-      alert("Fields are empty !");
+        setTitle("");
+        setContent("");
+      } else {
+        alert("Fields are empty !");
+      }
+    } catch (err) {
+      console.log(err.message);
     }
+
     // const response = await axios.post('http://localhost:3000/', {
     //   id: title.concat(content.substring(0.2)).replace(" ", ""),
     //   title,
     //   content,
     //   created: new Date().toLocaleDateString(),
     // });
-    
+
     // console.log(response.data);
     // if (!response.ok) {
     //   throw new Error('Failed to add note');

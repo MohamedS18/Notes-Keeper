@@ -8,8 +8,13 @@ async function getAllData(req,res) {
   try {
     // await mongoose.connect("mongodb://localhost:27017/demo");
 
+    const {username } = req.body;
+    // console.log(req.body);
     // new Note({title:"welcome", description:"hi", date:new Date()});
-    const data = await Notes.find({username:req.body.user}).sort({lastUpdated:-1});
+    const data = await Notes.findOne({ username }, { notes: true });
+    data.notes.sort((a, b) => b.lastUpdated - a.lastUpdated);
+
+    // console.log(data.notes);
     // Notes.insertOne({
     //   username: "sample",
     //   password: "sample",
@@ -32,7 +37,7 @@ async function getAllData(req,res) {
     //   });
     // }
 
-    res.status(200).send(data);
+    res.status(200).send(data.notes);
   } catch (err) {
     console.log(err.message);
   }

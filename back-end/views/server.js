@@ -7,11 +7,12 @@ const { isExist } = require("../model/isExist");
 const { isUserExist } = require("../controller/isUserExist");
 const { insertData } = require("../model/insertData");
 const { deleteData } = require("../model/deleteData");
+const { createNewUser } = require("../model/createNewUser");
 
 app.use(async (req, res, next) => {
   try {
     await mongoose.connect("mongodb://localhost:27017/demo");
-    console.log("database ok");
+    // console.log("database ok");
   } catch (err) {
     console.log(err.message);
   }
@@ -23,7 +24,9 @@ app.use(express.json());
 
 const PORT = 3000;
 
-app.post("/check", isUserExist);
+app.put("/login", isUserExist);
+
+app.post("/signup", createNewUser)
 
 app.put("/insert", insertData);
 

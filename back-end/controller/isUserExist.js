@@ -7,14 +7,15 @@ async function isUserExist (req,res){
         const credential =  req.body;
 
         const response = await isExist(credential.username);
-        // console.log(response+"ok");
-        // console.log(await credential);
-        // res.send/("check dons");
-        
+       
+        console.log(response);
         if (!response){
-            await createNewUser(credential.username, credential.password);
+            // await createNewUser(credential.username, credential.password);
+            res.send({status:false});
+        } else {
+            res.send({status:true});
         }
-        res.send({status:true});
+        
     }
     catch(err){
         console.log(err.message);

@@ -5,12 +5,14 @@ import axios from "axios";
 function Note(props) {
   
   async function handleChange(e) {
-    props.setRender(true);
+    // props.setRender(true);
     // console.log(e.target.name);
+    // console.log(props)
     const response = await axios.put("http://localhost:3000/delete", {
-      username:props.user,
+      username:props.username,
       note_id: e.target.name,
     });
+    props.refreshNotes();
 
 
 
