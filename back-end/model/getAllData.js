@@ -1,45 +1,38 @@
 const mongoose = require("mongoose");
-const { notesSchema } = require("../database/notesSchema");
-// import { notesSchema } from "../database/notesSchema";
+const { notesSchema } = require("./notesSchema");
 
 const Notes = mongoose.model.Notes || mongoose.model("Note", notesSchema);
 
 async function getAllData(req,res) {
-  try {
-    // await mongoose.connect("mongodb://localhost:27017/demo");
+  // try {
 
-    const {username } = req.body;
-    // console.log(req.body);
-    // new Note({title:"welcome", description:"hi", date:new Date()});
+  //   const {username } = req.body;
+  //   const data = await Notes.findOne({ username }, { notes: true });
+  //   
+
+
+  //   res.status(200).send(data.notes);
+  // } catch (err) {
+  //   console.log(err.message);
+  // }
+
+  try {
+    const { username } = req.query; // Extract username from query params
+
+    if (!username) {
+      return res.status(400).json({ message: "Username is required" });
+    }
+
     const data = await Notes.findOne({ username }, { notes: true });
     data.notes.sort((a, b) => b.lastUpdated - a.lastUpdated);
-
-    // console.log(data.notes);
-    // Notes.insertOne({
-    //   username: "sample",
-    //   password: "sample",
-    //   notes: [
-    //     {
-    //       title: "Hi",
-    //       content: "summa",
-    //       lastUpdated: new Date(),
-    //     },
-    //     { title: "Summa", content: "String", lastUpdated: new Date() },
-    //   ],
-    // });
-    // console.log(data);
-    //
-    // if (data.length === 0) {
-    //   await Notes.insertOne({
-    //     title: "Welcome",
-    //     content: "hi",
-    //     lastUpdated: new Date(),
-    //   });
+    // if (!data) {
+    //   return res.status(404).json({ message: "No notes found" });
     // }
 
-    res.status(200).send(data.notes);
+    res.status(200).json(data.notes);
   } catch (err) {
-    console.log(err.message);
+    console.error(err.message);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 }
 

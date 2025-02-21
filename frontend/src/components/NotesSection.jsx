@@ -10,11 +10,11 @@ function NotesSection(props) {
       try {
         
         // props.setIsLoading(true);
-        // await setTimeout(()=>{},2000)
         console.log("try");
-        const res = await axios.post("http://localhost:3000/", {
-          username: props.user,
+        const res = await axios.get(`http://localhost:3000/`, {
+          params: { username: props.user },  // Pass username as a query parameter
         });
+        
         setData(res.data);
       } catch (error) {
         console.error("Error fetching notes:", error);
@@ -29,8 +29,8 @@ function NotesSection(props) {
   const refreshNotes = async () => {
     try {
       // props.setIsLoading(true);
-      const res = await axios.post("http://localhost:3000/", {
-        username: props.user,
+      const res = await axios.get(`http://localhost:3000/`, {
+        params: { username: props.user },  // Pass username as a query parameter
       });
       setData(res.data);
       console.log("inserted");

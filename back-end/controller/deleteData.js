@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
-const { notesSchema } = require("../database/notesSchema");
-const { ObjectId } = require("mongodb");
+const { notesSchema } = require("../model/notesSchema");
 
 const Notes = mongoose.model.Note || mongoose.model("Note", notesSchema);
 

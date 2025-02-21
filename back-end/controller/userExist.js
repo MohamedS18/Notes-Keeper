@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const { notesSchema } = require("../database/notesSchema");
+const { notesSchema } = require("../model/notesSchema");
 
 const Notes = mongoose.model.Note || mongoose.model("Note", notesSchema);
 
-async function isExist(user) {
+async function userExist(user) {
   const data = await Notes.find({ username: user });
   // console.log(data);
   // console.log(data);
@@ -11,4 +11,4 @@ async function isExist(user) {
   return data.length === 0 ? false : true;
 }
 
-module.exports = { isExist };
+module.exports = { userExist };

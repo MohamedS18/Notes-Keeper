@@ -6,26 +6,48 @@ import AddNote from "./components/AddNote";
 import { LoginPage } from "./components/LoginPage";
 import axios from "axios";
 import NotesSection from "./components/NotesSection";
+import { Loader } from "./components/Loader";
 
 function App() {
+  const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  console.log(systemPrefersDark);
+
   const [user, setUser] = useState("");
   const [isLogged, setIsLogged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [darkMode, setDarkMode] = useState(systemPrefersDark);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark");
+      // localStorage.setItem("nk-darkMode", "yes");
+    } else {
+      document.body.classList.remove("dark");
+      // localStorage.setItem("nk-darkMode", "no");
+    }
+    // console.log("checked");
+  }, [darkMode]);
 
   if (isLoading) {
     return (
       <>
-        <h1>Loaading folks</h1>
+        <Loader/>
       </>
     );
   }
 
   if (!isLogged) {
-    return <LoginPage setIsLogged={setIsLogged} setUser={setUser} />;
+    return (
+      <LoginPage
+        setIsLogged={setIsLogged}
+        setUser={setUser}
+        setIsLoading={setIsLoading}
+      />
+    );
   } else {
     return (
       <>
-        <Header />
+        <Header username={user} darkMode={darkMode} setDarkMode={setDarkMode}/>
         <NotesSection
           isLogged={isLogged}
           setIsLoading={setIsLoading}

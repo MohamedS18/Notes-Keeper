@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
-const { notesSchema } = require("../database/notesSchema");
+const { notesSchema } = require("../model/notesSchema");
 
 const Notes = mongoose.model.Note || mongoose.model("Note", notesSchema);
 
 async function insertData(req, res) {
   try {
     const { username, title, content,lastUpdated } = req.body;
-    console.log("Yeah");
+    // console.log("Yeah");
     console.log(req.body);
     const data = await Notes.updateOne(
       { username: username },
