@@ -12,6 +12,8 @@ node_modules
 /back-end/vercel
 frontend/dist
 dist-ssr
+frontend/dist/
+
 # frontend/vite.config.js
 eslint-config.js
 *.local
