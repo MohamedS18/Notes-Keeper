@@ -1,5 +1,5 @@
 import Note from "./Note";
-import AddNote from "./AddNote";
+import {AddNote} from "./AddNote";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -8,36 +8,26 @@ function NotesSection(props) {
   useEffect(() => {
     async function getNotes() {
       try {
-        
-        // props.setIsLoading(true);
-        console.log("try");
         const res = await axios.get(`http://localhost:3000/`, {
-          params: { username: props.user },  // Pass username as a query parameter
+          params: { username: props.user },
         });
-        
+
         setData(res.data);
       } catch (error) {
-        console.error("Error fetching notes:", error);
-      } finally {
-        // props.setIsLoading(false);
+        alert("Something went wrong");
       }
     }
     getNotes();
-    // if (props.isLogged) getNotes();
   }, []);
 
   const refreshNotes = async () => {
     try {
-      // props.setIsLoading(true);
       const res = await axios.get(`http://localhost:3000/`, {
-        params: { username: props.user },  // Pass username as a query parameter
+        params: { username: props.user },
       });
       setData(res.data);
-      console.log("inserted");
     } catch (error) {
-      console.error("Error refreshing notes:", error);
-    } finally {
-      // props.setIsLoading(false);
+      alert("Something went wrong");
     }
   };
 
@@ -65,7 +55,6 @@ function NotesSection(props) {
           return (
             <Note
               refreshNotes={refreshNotes}
-            //   setRender={setRender}
               username={props.user}
               key={section._id}
               id={section._id}
@@ -80,4 +69,4 @@ function NotesSection(props) {
   );
 }
 
-export default NotesSection;
+export {NotesSection};

@@ -1,10 +1,7 @@
-import React from "react";
-
 function Header(props) {
-    function toggleDarkMode(e){
-      props.setDarkMode(!props.darkMode);
-    }
-
+  function toggleDarkMode(e) {
+    props.setDarkMode(!props.darkMode);
+  }
 
   return (
     <header id="header">
@@ -46,10 +43,12 @@ function Header(props) {
             </svg>
           )}
         </button>
-        <button className="user-button">{props.username[0].toUpperCase()}</button>
+        <button className="user-button">
+          {props.username[0].toUpperCase()}
+        </button>
       </div>
     </header>
   );
 }
 
-export default Header;
+export {Header};

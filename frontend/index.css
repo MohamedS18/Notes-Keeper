@@ -12,7 +12,7 @@
   background-color: #fff;
 }
 
-.dark .outer-body{
+.dark .outer-body {
   background-color: #252525;
 }
 
@@ -31,7 +31,6 @@
 .auth-wave-icon {
   color: #6366f1;
   text-align: center;
-  /* font-size: 2rem; */
 }
 
 .auth-heading {
@@ -44,7 +43,7 @@
   color: #111827;
 }
 
-.dark .auth-heading{
+.dark .auth-heading {
   color: white;
 }
 
@@ -60,7 +59,7 @@
   font-weight: 500;
 }
 
-.dark .auth-label{
+.dark .auth-label {
   color: white;
 }
 
@@ -84,14 +83,13 @@
   transition: border-color 0.2s;
 }
 
-.dark .auth-input{
+.dark .auth-input {
   background-color: #d2d2d2;
 }
 
 .auth-input:focus {
   border: 1px solid;
   border-color: rgb(255, 188, 43);
-  /* box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); */
 }
 
 .auth-submit-btn {
@@ -118,7 +116,7 @@
   font-size: 0.875rem;
 }
 
-.dark .auth-signup-wrapper{
+.dark .auth-signup-wrapper {
   color: white;
 }
 
@@ -133,8 +131,8 @@
 }
 
 :root {
-  --primary-color:#FCC737;
-  --secondary-color:#e7aa02;
+  --primary-color: #fcc737;
+  --secondary-color: #e7aa02;
   --text-color: rgba(255, 255, 255, 0.938);
   --border-color: rgb(150, 150, 150);
   --shadow-color: rgb(163, 163, 163);
@@ -144,15 +142,14 @@
   --footer-background: hsl(0, 0%, 85%);
 }
 
-.dark :root{
- --primary-color: black;
- --secondary-color:blue;
+.dark :root {
+  --primary-color: black;
+  --secondary-color: blue;
 }
 
 * {
   margin: 0;
   padding: 0;
-  /* box-sizing: border-box; */
   font-family: "Nunito", sans-serif;
 }
 
@@ -161,7 +158,7 @@ body {
   min-height: 100vh;
 }
 
-.dark{
+.dark {
   background-color: #252525;
 }
 
@@ -213,12 +210,12 @@ body {
   transition-duration: 0.2s;
 }
 
-.user-button:hover{
+.user-button:hover {
   background-color: var(--secondary-color);
   cursor: pointer;
 }
 
-.bi{
+.bi {
   fill: white;
 }
 
@@ -236,17 +233,11 @@ body {
   border: none;
 }
 
-.dark-mode-button:hover{
+.dark-mode-button:hover {
   background-color: var(--secondary-color);
   cursor: pointer;
 }
-/* Note Board Layout */
-/* .board {
-  display: flex;
-  flex-wrap: wrap;
-} */
 
-/* Note Container Styles */
 .note-container {
   display: grid;
   grid-template-rows: 1fr 3fr 20px;
@@ -260,20 +251,20 @@ body {
   /* max-width: 350px; */
 }
 
-.dark .note-container{
+.dark .note-container {
   background-color: #383838;
   box-shadow: 3px 3px 10px rgb(28, 28, 28);
   color: white;
 }
 
 .note-container:hover {
-  border:solid var(--primary-color);
+  border: solid var(--primary-color);
   transform: translateY(-3px);
   box-shadow: 0 8px 12px rgb(200, 200, 200);
 }
 
 .dark .note-container:hover {
-  border:solid var(--primary-color);
+  border: solid var(--primary-color);
   transform: translateY(-3px);
   box-shadow: 0 8px 12px rgb(36, 36, 36);
 }
@@ -288,7 +279,7 @@ body {
 /* Add Note Form Styles */
 .add-note-outer-container {
   display: flex;
-  
+
   z-index: 1;
   background-color: var(--background-color);
   position: fixed;
@@ -300,13 +291,11 @@ body {
   padding-top: 40px;
   border-bottom: solid rgb(194, 194, 194);
   justify-content: center;
-  /* padding: 0px; */
+  border-bottom: solid var(--primary-color);
 }
 
-
-.dark .add-note-outer-container{
-  background-color:#24282f;
-  border-bottom: solid var(--primary-color);
+.dark .add-note-outer-container {
+  background-color: #24282f;
   box-shadow: 5px 7px 19px 0px rgba(41, 41, 41, 0.3);
 }
 
@@ -317,7 +306,7 @@ body {
 }
 
 .note-container {
-  flex: 1 1 250px; /* grow | shrink | basis */
+  flex: 1 1 250px;
   min-width: 250px;
   height: auto;
 }
@@ -332,7 +321,6 @@ body {
 .title {
   display: block;
   width: 100%;
-  /* max-height: 20px; */
   font-weight: bold;
   font-size: 25px;
 }
@@ -340,7 +328,7 @@ body {
 .content {
   word-break: break-all;
   font-weight: 500;
-  /* height: 60%; */
+  padding: 10px 0px 0px 0px;
 }
 
 .date {
@@ -350,7 +338,7 @@ body {
   font-size: 13px;
 }
 
-.dark .date{
+.dark .date {
   color: rgb(255, 255, 255);
 }
 
@@ -367,7 +355,7 @@ body {
   transition: background-color 1s, color 1s;
 }
 
-.dark .delete-button{
+.dark .delete-button {
   background-color: #383838;
 }
 
@@ -377,15 +365,28 @@ body {
 
 /* Footer Styles */
 #footer {
-  position: fixed;
-  bottom: 0;
   width: 100%;
   height: 40px;
   padding-top: 10px;
-  color: var(--footer-color);
+  color:#454545;
   text-align: center;
-  background-color: var(--footer-background);
+  background-color: #d4d4d4;
 }
+
+.dark #footer{
+  color: var(--footer-color);
+  background-color: rgb(55, 55, 55);
+}
+
+.footer-logo{
+  fill: #454545;
+}
+
+.dark .footer-logo{
+  fill:  var(--footer-color);
+}
+
+
 
 .title-input,
 .content-input {
@@ -393,12 +394,11 @@ body {
   width: 100%;
   border: none;
   box-shadow: 3px 3px 10px var(--shadow-color);
-  /* background-color: white; */
   padding: 10px;
 }
 
 .dark .title-input,
-.dark .content-input{
+.dark .content-input {
   background-color: #383838;
   box-shadow: 3px 3px 10px rgb(28, 28, 28);
   color: white;
@@ -414,15 +414,12 @@ body {
 .content-input {
   height: 120px;
   border-radius: 0 0 30px 30px;
-
 }
 
 input:focus,
 textarea:focus {
-  
-  outline:  none ;
+  outline: none;
   border-top: none;
-
 }
 
 /* Add Button Styles */
@@ -435,33 +432,31 @@ textarea:focus {
   border-radius: 30px;
   height: 50px;
   width: 50px;
-  /* padding-bottom: 50px; */
-  top: 150px;
-  right: -24px;
+  top: 140px;
+  right: -15px;
   cursor: pointer;
   transition: background-color 1s;
 }
 
-.add-button:hover{
+.add-button:hover {
   background-color: var(--secondary-color);
 }
 
 @keyframes pulseSpin {
   0% {
-      transform: scale(1) rotate(0deg);
+    transform: scale(1) rotate(0deg);
   }
 
   50% {
-      transform: scale(1.2) rotate(180deg);
+    transform: scale(1.2) rotate(180deg);
   }
 
   100% {
-      transform: scale(1) rotate(360deg);
+    transform: scale(1) rotate(360deg);
   }
 }
 
-.loading-container{
-  /* background-color: red; */
+.loading-container {
   height: 100vh;
   width: 100%;
   display: flex;
@@ -471,21 +466,21 @@ textarea:focus {
   align-items: center;
 }
 
-.dark .loading-container{
-  color:white;
+.dark .loading-container {
+  color: white;
 }
 
 .load-icon {
   font-size: 50px;
   display: flex;
-justify-content: center;
+  justify-content: center;
   animation: pulseSpin 2s infinite ease-in-out;
 }
 
-.load-i{
-  fill:black;
+.load-i {
+  fill: black;
 }
 
-.dark .load-i{
+.dark .load-i {
   fill: white;
 }

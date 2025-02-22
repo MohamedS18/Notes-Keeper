@@ -7,7 +7,6 @@ function AddNote(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(title !== "" && content !== "");
     try {
       if (title !== "" && content !== "") {
         const response = await axios.put("http://localhost:3000/notes/insert", {
@@ -16,17 +15,14 @@ function AddNote(props) {
           content,
           lastUpdated: new Date(),
         });
-        console.log(response.data);
         props.refreshNotes();
-        console.log("suma");
-
         setTitle("");
         setContent("");
       } else {
         alert("Fields are empty !");
       }
     } catch (err) {
-      console.log(err.message);
+      alert("something went wrong")
     }
   }
 
@@ -49,6 +45,7 @@ function AddNote(props) {
             className="title-input"
             value={title}
             type="text"
+            required
           ></input>
           <textarea
             name="content"
@@ -57,6 +54,7 @@ function AddNote(props) {
             className="content-input"
             value={content}
             type="text"
+            required
           ></textarea>
           <button type="submit" className="add-button">
           <svg
@@ -76,4 +74,4 @@ function AddNote(props) {
   );
 }
 
-export default AddNote;
+export  {AddNote};

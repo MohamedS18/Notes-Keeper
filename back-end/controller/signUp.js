@@ -1,19 +1,15 @@
 const mongoose = require("mongoose");
 const { notesSchema } = require("../model/notesSchema");
-const { userExist } = require("../controller/userExist");
 const bcrypt = require("bcryptjs");
-
 
 const Notes = mongoose.model.Notes || mongoose.model("Note", notesSchema);
 
 async function signUp(req, res) {
   try {
-    const {username, password} = req.body;
-    // console.log(username, password);
+    const { username, password } = req.body;
     const data = await Notes.findOne({ username });
-    console.log(data?true:false);
     if (data) {
-      res.status(200).send({ status: false });
+      res.status(400).send({ status: false });
       return;
     }
 
@@ -21,23 +17,21 @@ async function signUp(req, res) {
 
     const insert = await Notes.insertOne({
       username,
-      password:hashedPassword,
+      password: hashedPassword,
       notes: [
         {
-          title: "Welcome",
-          content: "Its your first Note",
+          title: `Welcome ${username.split("@")[0]}`,
+          content:
+            "📝✨ Start capturing your thoughts, ideas, and memories—all in one place. Happy noting!",
           lastUpdated: new Date(),
         },
       ],
     });
-    // console.log(response);
     res.status(200).send({ status: true });
   } catch (err) {
     console.log(err.message);
     res.status(500).send({ status: false });
   }
 }
-
-
 
 module.exports = { signUp };

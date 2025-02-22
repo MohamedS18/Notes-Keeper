@@ -3,8 +3,8 @@ import { useState } from "react";
 
 function LoginPage(props) {
   const [isSignUp, setIsSignUp] = useState(false);
-  const [username, setUsername] = useState("sample");
-  const [password, setPassword] = useState("sample");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -12,55 +12,56 @@ function LoginPage(props) {
       username: username.toLowerCase(),
       password,
     };
-    console.log(credential);
 
-    try {
-      props.setIsLoading(true);
-      if (isSignUp) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(credential.username)) {
+      alert("Enter a valid email");
+      return;
+    }
+
+    const pinRegex = /^\d{4}$/;
+    if (!pinRegex.test(credential.password)) {
+      alert("Password must be a 4-digit PIN.");
+      return;
+    }
+
+    if (isSignUp) {
+      try {
+        props.setIsLoading(true);
         const res = await axios.post(
           "http://localhost:3000/notes/signup",
           credential
         );
-        // conso
-        if (!res.data.status) {
-          alert("User Already Exist");
-          return;
-        }
+        props.setIsLoading(false);
+      } catch (err) {
+        props.setIsLoading(false);
+        setTimeout(() => alert("Credential Already Exist! Please Login"), 500);
+        return;
       }
+    }
 
+    try {
+      props.setIsLoading(true);
       const res = await axios.put(
         "http://localhost:3000/notes/login",
         credential
       );
-      const response = res.data.status;
-      // console.log(res.data);
-      props.setIsLogged(response);
 
-      // console.log(response);
-      !response
-        ? alert("wrong credential")
-        : props.setUser(credential.username);
-    } catch (err) {
-      console.log(err.message);
-    } finally {
+      props.setUser(credential.username);
+      props.setIsLogged(true);
       props.setIsLoading(false);
+    } catch (err) {
+      props.setIsLoading(false);
+      setTimeout(() => alert("Credential Mismatch"), 500);
     }
   }
 
   function handleChangeUsername(e) {
     setUsername(e.target.value);
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(username)) {
-      console.log("Invalid email format.");
-    }
   }
 
   function handleChangePassword(e) {
     setPassword(e.target.value);
-    const pinRegex = /^\d{4}$/;
-    if (!pinRegex.test(password)) {
-      console.log("Password must be a 4-digit PIN.");
-    }
   }
 
   function handleChangeIsSignUp() {
@@ -68,7 +69,6 @@ function LoginPage(props) {
   }
 
   return (
-
     <div className="outer-body">
       <div className="auth-login-container">
         <div className="auth-login-container">
@@ -87,17 +87,17 @@ function LoginPage(props) {
             </div>
             <div className="auth-heading">Notes Keeper</div>
           </div>
-          {/* <h1 className="auth-heading">Notes Keeper</h1> */}
           <form onSubmit={handleSubmit}>
             <div className="auth-form-group">
               <label className="auth-label">Email address</label>
               <input
+                type="email"
                 id="auth-email"
                 className="auth-input"
                 onChange={handleChangeUsername}
-                type="text"
                 name="username"
-                defaultValue="sample"
+                placeholder="user@email.com"
+                autoComplete="off"
               />
             </div>
             <div className="auth-form-group">
@@ -109,9 +109,10 @@ function LoginPage(props) {
                 id="auth-password"
                 className="auth-input"
                 onChange={handleChangePassword}
-                type="text"
+                type="password"
+                placeholder="4-digit PIN"
                 name="password"
-                defaultValue="sample"
+                autoComplete="off"
               />
             </div>
             <button type="submit" className="auth-submit-btn">
