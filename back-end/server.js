@@ -11,7 +11,6 @@ app.use(cors({
     origin: [
       'https://khabir-notes.vercel.app',
       'https://notes-keeper-backend-sigma.vercel.app',
-      // Add any other domains that need access
       process.env.URL
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
