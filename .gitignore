@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 .env
-back-end\views\.env
+/back-end/vercel
 dist-ssr
 frontend/vite.config.js
 eslint-config.js
