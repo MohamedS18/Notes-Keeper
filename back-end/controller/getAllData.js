@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const { notesSchema } = require("../model/notesSchema");
+const { logger } = require("../logs/logger");
 
 const Notes = mongoose.model.Notes || mongoose.model("Note", notesSchema);
 
 async function getAllData(req, res) {
   try {
     const { username } = req.query;
-
+    logger("GET", username);
     if (!username) {
       return res.status(401).json({ message: "Username is required" });
     }

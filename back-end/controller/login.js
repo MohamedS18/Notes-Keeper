@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 const { notesSchema } = require("../model/notesSchema");
 const bcrypt = require("bcryptjs");
+const {logger} = require("../logs/logger")
 
 const Notes = mongoose.model.Note || mongoose.model("Note", notesSchema);
 
 async function login(req, res) {
   try {
     const { username, password } = req.body;
-
+    logger("PUT", username);
     const data = await Notes.findOne({ username });
 
     if (!data) {

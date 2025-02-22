@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const { notesSchema } = require("../model/notesSchema");
+const {logger} = require("../logs/logger")
+
 
 const Notes = mongoose.model.Note || mongoose.model("Note", notesSchema);
 
 async function insertData(req, res) {
   try {
     const { username, title, content, lastUpdated } = req.body;
+    logger("PUT", username);
     const data = await Notes.updateOne(
       { username: username },
       {

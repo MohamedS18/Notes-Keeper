@@ -4,11 +4,17 @@ const cors = require("cors");
 const app = express();
 const { getAllData } = require("./controller/getAllData");
 const { connectDB } = require("./database/connectDB");
+const {logger} = require("./logs/logger");
 
 const { notesRoute } = require("./routes/notesRoute");
 
 dotenv.config();
+// app.use((req,res,next)=>{
+//     // console.log(req.body);
+//     next();
+// }); 
 
+// app.use(logger); 
 app.use(connectDB);
 app.use(cors({ origin: "http://localhost:5173" }));
 app.use(express.urlencoded({ extended: true }));
