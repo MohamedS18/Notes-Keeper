@@ -2,13 +2,22 @@ const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { getAllData } = require("./controller/getAllData");
 const { connectDB } = require("./database/connectDB");
 const { notesRoute } = require("./routes/notesRoute");
 
 dotenv.config();
 
-app.use(cors({ origin: "*" }));
+app.use(cors({
+    origin: [
+      'https://khabir-notes.vercel.app',
+      'https://notes-keeper-backend-sigma.vercel.app',
+      // Add any other domains that need access
+      process.env.URL
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+  }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
