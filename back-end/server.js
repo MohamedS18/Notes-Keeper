@@ -8,7 +8,7 @@ const { notesRoute } = require("./routes/notesRoute");
 
 dotenv.config();
 
-app.use(cors({ origin: process.env.URL }));
+app.use(cors({ origin: "*" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
