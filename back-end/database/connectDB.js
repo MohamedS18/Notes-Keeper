@@ -8,7 +8,6 @@ async function connectDB(req, res, next) {
     console.log(err.message);
     process.exit(1);
   }
-  next();
 }
 
 module.exports = { connectDB };
