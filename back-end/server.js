@@ -20,6 +20,4 @@ app.use(express.json());
 
 app.use("/notes", notesRoute);
 
-const PORT = process.env.PORT || 3300;
-// app.listen(PORT, () => console.log("Server running on port " + PORT));
 module.exports = app;
