@@ -5,7 +5,6 @@ export default defineConfig({
   plugins: [react()],
   base: "/", // Fix asset loading issue
   build: {
-    outDir: "dist",
-    assetsDir: "assets",
-  }
+    outDir: 'dist',  // Ensure output directory is 'dist'
+  },
 });
