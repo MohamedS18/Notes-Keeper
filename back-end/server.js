@@ -7,32 +7,34 @@ const { notesRoute } = require("./routes/notesRoute");
 
 dotenv.config();
 
-app.use(cors({
+app.use(
+  cors({
     origin: [
-      'https://khabir-notes.vercel.app',
-      'https://notes-keeper-backend-sigma.vercel.app',
-      process.env.URL
+      "https://khabir-notes.vercel.app",
+      "https://notes-keeper-backend-sigma.vercel.app",
+      process.env.URL,
     ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-  }));
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-connectDB(); 
+connectDB();
 
-app.get("/", (req,res)=>{
-    res.status(200).json({status:"Successful"});
+app.get("/", (req, res) => {
+  res.status(200).json({ status: "Successful" });
 });
 
 app.use("/notes", notesRoute);
 
-if (process.env.NODE_ENV !== 'production') {
-    const port = process.env.PORT || 3000;
-    app.listen(port, () => {
-        console.log(`Server running on port ${port}`);
-    });
+if (process.env.NODE_ENV !== "production") {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+  });
 }
 
 module.exports = app;
