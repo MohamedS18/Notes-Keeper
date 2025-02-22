@@ -9,7 +9,7 @@ function AddNote(props) {
     e.preventDefault();
     try {
       if (title !== "" && content !== "") {
-        const response = await axios.put("http://localhost:3000/notes/insert", {
+        const response = await axios.put("https://notes-keeper-backend-sigma.vercel.app/notes/insert", {
           username: props.user,
           title,
           content,

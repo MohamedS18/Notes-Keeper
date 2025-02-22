@@ -29,7 +29,7 @@ function LoginPage(props) {
       try {
         props.setIsLoading(true);
         const res = await axios.post(
-          "http://localhost:3000/notes/signup",
+          "https://notes-keeper-backend-sigma.vercel.app/notes/signup",
           credential
         );
         props.setIsLoading(false);
@@ -43,7 +43,7 @@ function LoginPage(props) {
     try {
       props.setIsLoading(true);
       const res = await axios.put(
-        "http://localhost:3000/notes/login",
+        "https://notes-keeper-backend-sigma.vercel.app/notes/login",
         credential
       );
 

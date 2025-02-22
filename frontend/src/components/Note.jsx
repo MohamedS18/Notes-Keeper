@@ -2,7 +2,7 @@ import axios from "axios";
 
 function Note(props) {
   async function handleChange(e) {
-    const response = await axios.put("http://localhost:3000/notes/delete", {
+    const response = await axios.put("https://notes-keeper-backend-sigma.vercel.app/notes/delete", {
       username: props.username,
       note_id: e.target.name,
     });
