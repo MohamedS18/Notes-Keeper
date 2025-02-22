@@ -8,7 +8,7 @@ function NotesSection(props) {
   useEffect(() => {
     async function getNotes() {
       try {
-        const res = await axios.get(`http://localhost:3000/`, {
+        const res = await axios.get(`http://localhost:3000/notes/getdata/`, {
           params: { username: props.user },
         });
 
@@ -22,7 +22,7 @@ function NotesSection(props) {
 
   const refreshNotes = async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/`, {
+      const res = await axios.get(`http://localhost:3000/notes/getdata`, {
         params: { username: props.user },
       });
       setData(res.data);

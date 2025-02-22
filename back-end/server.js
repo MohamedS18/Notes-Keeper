@@ -9,13 +9,17 @@ const { notesRoute } = require("./routes/notesRoute");
 
 dotenv.config();
 
+app.get("/", (req,res)=>{
+    res.status(200).json({staus:"Successfull"});
+})
+
 app.use(connectDB);
 app.use(cors({ origin: process.env.URL }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/notes", notesRoute);
-app.get("/", getAllData);
 
 const PORT = process.env.PORT || 3300;
-app.listen(PORT, () => console.log("Server running on port " + PORT));
+// app.listen(PORT, () => console.log("Server running on port " + PORT));
+module.exports = app;
