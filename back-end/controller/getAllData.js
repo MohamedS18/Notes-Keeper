@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { notesSchema } = require("../model/notesSchema");
-const { logger } = require("../logs/logger");
+const { logger } = require("../logging/logger");
 
 const Notes = mongoose.model.Notes || mongoose.model("Note", notesSchema);
 

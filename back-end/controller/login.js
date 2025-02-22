@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { notesSchema } = require("../model/notesSchema");
 const bcrypt = require("bcryptjs");
-const {logger} = require("../logs/logger")
+const {logger} = require("../logging/logger")
 
 const Notes = mongoose.model.Note || mongoose.model("Note", notesSchema);
 
