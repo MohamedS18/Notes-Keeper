@@ -6,6 +6,12 @@ const {logger} = require("../logging/logger")
 const Notes = mongoose.model.Note || mongoose.model("Note", notesSchema);
 
 async function login(req, res) {
+
+  res.header('Access-Control-Allow-Origin', 'https://khabir-notes.vercel.app');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+
   try {
     const { username, password } = req.body;
     logger("PUT", username);
