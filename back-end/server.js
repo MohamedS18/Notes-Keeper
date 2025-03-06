@@ -12,6 +12,7 @@ app.use(
     origin: [
       "https://khabir-notes.vercel.app",
       "https://notes-keeper-backend-sigma.vercel.app",
+      "https://notes-keeper-app-beta-100.web.app",
       process.env.URL,
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
