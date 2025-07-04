@@ -19,9 +19,8 @@ function LoginPage(props) {
       return;
     }
 
-    const pinRegex = /^\d{4}$/;
-    if (!pinRegex.test(credential.password)) {
-      alert("Password must be a 4-digit PIN.");
+    if (credential.password === "") {
+      alert("Enter Password");
       return;
     }
 
@@ -110,7 +109,7 @@ function LoginPage(props) {
                 className="auth-input"
                 onChange={handleChangePassword}
                 type="password"
-                placeholder="4-digit PIN"
+                placeholder="password"
                 name="password"
                 autoComplete="off"
               />
